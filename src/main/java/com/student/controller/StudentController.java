@@ -49,7 +49,7 @@ public class StudentController {
 		return studentService.getAllStudentsInDepartment(department, optionalSurname.orElse(""));
 	}
 	@PostMapping
-	public ResponseEntity<String> addStudent(@RequestParam Student student) {
+	public ResponseEntity<String> addStudent(@RequestBody Student student) {
 		studentService.add(student);
 		if (student.getId() > 0) {
 			URI uri = URI.create("/college/student/" + student.getId());
