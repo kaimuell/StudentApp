@@ -33,6 +33,13 @@ public class StudentServiceImpl implements StudentService {
 				.collect(Collectors.toList());
 	}
 
+	@Override
+	public void add(Student student) {
+		if (student.getFirstName() != null && student.getSurname() != null){
+			studentDao.add(student);
+		}
+	}
+
 	public void setStudentDao(StudentDao studentDao) {
 		this.studentDao = studentDao;
 	}

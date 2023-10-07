@@ -1,17 +1,14 @@
 package com.student.controller;
 
+import java.net.URI;
 import java.util.Collection;
 import java.util.Optional;
 
 import javax.inject.Inject;
 
- 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.student.StudentProperties;
 import com.student.core.Student;
@@ -50,6 +47,16 @@ public class StudentController {
 	public Collection<Student> getStudentsPerDepartment(@PathVariable String department,
 														@RequestParam("name") Optional<String> optionalSurname){
 		return studentService.getAllStudentsInDepartment(department, optionalSurname.orElse(""));
+	}
+	@PostMapping
+	public ResponseEntity<String> addStudent(@RequestParam Student student) {
+		studentService.add(student);
+		if (student.getId() > 0) {
+			URI uri = URI.create("/college/student/" + student.getId());
+			return ResponseEntity.accepted().location(uri).build();
+		}else {
+			return ResponseEntity.badRequest().build();
+		}
 	}
 
 }

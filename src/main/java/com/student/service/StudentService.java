@@ -11,4 +11,6 @@ public interface StudentService {
 
 	Collection<Student> getAllStudentsInDepartment(String department, String lastNameLike);
 
+	void add(Student student);
+
 }
