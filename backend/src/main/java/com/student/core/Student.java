@@ -8,21 +8,23 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 @JsonInclude(Include.NON_NULL)
 @XmlRootElement
 public class Student {
- 
+
 	private long id;
- 
+
 	private String firstName;
-	 
+
 	private String surname;
- 
+
 	private String dept;
-	 
-     private Double fees;
-	
+
+	private Double fees;
+
+	private College college;
+
 	public Student() {
 		super();
 	}
-	 
+
 	public Student(long id, String firstName, String surname, String dept, Double fees) {
 		super();
 		this.id = id;
@@ -62,11 +64,21 @@ public class Student {
 	public void setFees(Double fees) {
 		this.fees = fees;
 	}
+
+
+	public College getCollege() {
+		return college;
+	}
+
+	public void setCollege(College college) {
+		this.college = college;
+	}
+
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", firstName=" + firstName + ", surname=" + surname + ", dept=" + dept + ", fees="
 				+ fees + "]";
 	}
-	
-	
+
+
 }

@@ -17,6 +17,7 @@ import com.student.service.StudentService;
 
 @RequestMapping("/student")
 @RestController
+@CrossOrigin
 public class StudentController {
 	
 	@Inject 
