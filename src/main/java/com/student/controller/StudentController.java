@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.inject.Inject;
 
 
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,13 +35,14 @@ public class StudentController {
 	}
 	
 	@GetMapping("/{id}")
-	public Student getStudent(@PathVariable("id") long id) {
-		return studentService.get(id);
+	public ResponseEntity<Student> getStudent(@PathVariable("id") long id) {
+		return ResponseEntity.ok(studentService.get(id));
 	}
 
-	@GetMapping("/single")
-	public Student getSingleStudent(@RequestParam("id") Optional<Long> optional) {
-		return studentService.get(optional.orElse(1l));
+	@GetMapping(path="/single",
+			produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public ResponseEntity<Student> getSingleStudent(@RequestParam("id") Optional<Long> optional) {
+		return ResponseEntity.ok(studentService.get(optional.orElse(1l)));
 	}
 
 	@GetMapping("/search/{department}")

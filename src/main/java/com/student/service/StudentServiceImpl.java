@@ -8,6 +8,7 @@ import javax.inject.Named;
 
 import com.student.core.Student;
 import com.student.dao.StudentDao;
+
 @Named
 public class StudentServiceImpl implements StudentService {
 	@Inject

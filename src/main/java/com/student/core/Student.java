@@ -1,6 +1,12 @@
 package com.student.core;
 
- 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+
+@JsonInclude(Include.NON_NULL)
+@XmlRootElement
 public class Student {
  
 	private long id;
