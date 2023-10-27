@@ -98,6 +98,7 @@ public class Student {
 	public Collection<Course> getCourses() {
 		return courses;
 	}
+
 	public void add(Course course) {
 		courses.add(course);
 	}
